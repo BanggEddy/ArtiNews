@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['loggedin']) && !isset($_COOKIE['loggedin'])) {
+    header('Location: index.php');
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,10 +18,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 
-    <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+<nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="page_article.php" class="flex items-center">
-        <img src="logo.png" class="h-8 mr-3" alt="Flowbite Logo" />
+        <img src="logo.png" class="h-8 mr-3" alt="marque Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">ArtiNews</span>
     </a>
     <a href="page_article.php" class="flex items-center">
@@ -36,6 +46,9 @@
         <li>
           <a href="supprimerpage_article.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Supprimer</a>
         </li>
+        <li>
+          <a href="deconnexion.php" class="block py-2 pl-3 pr-4 text-red-600 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-800 md:p-0 dark:text-red-500 md:dark:hover:text-red-700 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Déconnexion</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -44,7 +57,7 @@
 </head>
 
 <body>
-<br><br><br>
+    <br><br><br>
     <div class="grid grid-cols-3 gap-8 mx-auto container items-center">
         <?php 
         $json = file_get_contents('bdd.json');         
@@ -60,10 +73,12 @@
                         <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900"><?php echo $a['titre']; ?></h2>
                     </a>
                     <p class="mb-3 font-normal text-gray-700"><?php echo substr($a['contenu'], 0, 200); ?>...</p>
-                    <form action="supprimer_article.php" method="post">
-                        <input type="hidden" name="index" value="<?php echo $index; ?>">
-                        <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded-full mt-2">Supprimer</button>
-                    </form>
+                    <a href="details_article.php?index=<?php echo $index; ?>" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                        Lire plus
+                        <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -72,4 +87,3 @@
 </body>
 
 </html>
-

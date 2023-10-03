@@ -22,7 +22,7 @@ if (
     ];
 
     rewrite_bdd($articles);
-    header('location: index.php');
+    header('location: page_article.php');
 } else {
     header('location: ajouter_article.php?error=true');
 }

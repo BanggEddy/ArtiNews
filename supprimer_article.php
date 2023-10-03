@@ -9,6 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     file_put_contents('bdd.json', json_encode(array_values($articles)));
     
-    header('Location: index.php');
+    header('Location: supprimerpage_article.php');
 }
 ?>

@@ -10,11 +10,11 @@
 
     <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="index.php" class="flex items-center">
+    <a href="page_article.php" class="flex items-center">
         <img src="logo.png" class="h-8 mr-3" alt="Flowbite Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">ArtiNews</span>
     </a>
-    <a href="index.php" class="flex items-center">
+    <a href="page_article.php" class="flex items-center">
     <img src="2206368.png" class="h-8 mr-3" alt="admin Logo"/>
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Administrateur</span>
     </a>

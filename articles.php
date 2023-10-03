@@ -1,4 +1,11 @@
 <?php 
+$utilisateur = array (
+  0 =>
+  array (
+    'email' => 'root@root',
+    'p' => 'root',
+  )
+  );
 $articles = array (
   0 => 
   array (
